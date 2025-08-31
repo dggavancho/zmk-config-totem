@@ -105,7 +105,7 @@ label= "BASE"                              ;
                 &kp Q       &kp W       &kp E       &kp R       &kp T           &kp Y       &kp U       &kp I       &mt O MINUS &mt P EQUAL
                 &kp A       &kp S       &kp D       &kp F       &kp G           &kp H       &kp J       &kp K       &kp L       &mt SEMI LBKT
     &kp LSHFT   &kp Z       &mt X LGUI  &kp C       &kp V       &kp B           &kp N       &kp M       &kp COMMA   &kp DOT     &mt FSLH RBKT &kp RSHFT
-                                        &kp LCTRL   &mo NAVI    &kp SPACE       &kp BSPC    &mo NAVI  	&kp LGUI
+                                        &kp LCTRL   &mo 1    &kp SPACE       &kp BSPC    &mo 1  	&kp LGUI
                         >;
                 };
 
@@ -130,8 +130,8 @@ label= "NAVI"                              ;
 
                 &kp KP_N1   &mt KP_N2 F2 &mt KP_3  &mt KP_4 F4 &mt KP_5 F5       &kp KP_6    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp KP_0
                 &kp LSHFT &trans &kp K_SCROLL_UP &kp K_SCROLL_DOWN   &trans           &mt LEFT HOME &kp DOWN   &kp UP    &mt RIGHT END  &kp SQT
-    &LSHFT      &kp BSLH    &trans      &trans      &trans      &mo SYS         &kp PSCRN    &kp DEL     &trans      &trans   &kp NUBS    &kp RSHFT      
-                                        &kp LCTRL   &mo NAVI    &kp SPACE       &mo BSPC     &mo NAVI    &kp LGUI      
+    &LSHFT      &kp BSLH    &trans      &trans      &trans      &trans          &kp PSCRN    &kp DEL     &trans      &trans   &kp NUBS    &kp RSHFT      
+                                        &kp LCTRL   &mo 3       &kp SPACE       &mo BSPC     &mo 1    &kp LGUI      
                         >;
                 };
 
