@@ -68,20 +68,6 @@
             };
     };
 
-    macros {
-        gif: gif {
-            label = "giphy";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp N2>
-                , <&macro_release &kp LSHFT>
-                , <&macro_tap &kp G &kp I &kp F>
-                ;
-        };
-    };
-
         keymap {
                 compatible = "zmk,keymap";
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -131,7 +117,7 @@ label= "NAVI"                              ;
                 &kp N1   &mt N2 F2 &mt N3  &mt N4 F4 &mt N5 F5                  &kp N6    &kp N7   &kp N8   &kp N9   &kp N0
                 &kp LSHFT &trans &kp K_SCROLL_UP &kp K_SCROLL_DOWN   &trans           &mt LEFT HOME &kp DOWN   &kp UP    &mt RIGHT END  &kp SQT
     &kp LSHFT      &kp BSLH    &trans      &trans      &trans      &trans          &kp PSCRN    &kp DEL     &trans      &trans   &kp NUBS    &kp RSHFT      
-                                        &kp LCTRL   &mo 3       &kp SPACE       &mo BSPC     &mo 1    &kp LGUI      
+                                        &kp LCTRL   &mo 1       &kp SPACE       &mo BSPC     &mo 1    &kp LGUI      
                         >;
                 };
 
