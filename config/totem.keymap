@@ -18,7 +18,6 @@
 
 #define BASE 0
 #define NAV  1
-#define BLE  2
 
 &mt {
   quick-tap-ms = <100>;
