@@ -18,6 +18,7 @@
 
 #define BASE 0
 #define NAV  1
+#define BLE  2
 
 &mt {
   quick-tap-ms = <100>;
@@ -41,17 +42,17 @@
 / {
      combos {
             compatible = "zmk,combos";
-            combo_enter {
-                timeout-ms = <50>;
-		layers = <0>;
-                key-positions = <11 12 13>;
-                bindings = <&kp ENTER>;
-            };
             combo_esc {
                 timeout-ms = <50>;
 		layers = <0>;
-                key-positions = <16 17 18>;
+                key-positions = <11 12 13>;
                 bindings = <&kp ESC>;
+            };
+            combo_enter {
+                timeout-ms = <50>;
+		layers = <0>;
+                key-positions = <16 17 18>;
+                bindings = <&kp ENTER>;
             };
             combo_ralt {
                 timeout-ms = <50>;
@@ -70,6 +71,13 @@
 		layers = <0>;
                 key-positions = <0 1>;
                 bindings = <&kp TAB>;
+            };
+
+	    combo_tg_ble {
+                timeout-ms = <50>;
+		layers = <0>;
+                key-positions = <10 14>;
+                bindings = <&tog 2>;
             };
     };
 
@@ -93,9 +101,9 @@ label= "BASE"                              ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
-                &kp Q       &kp W       &kp E       &kp R       &kp T           &kp Y       &kp U       &kp I       &mt O MINUS &mt P EQUAL
-                &kp A       &kp S       &kp D       &kp F       &kp G           &kp H       &kp J       &kp K       &kp L       &mt SEMI LBKT
-    &kp LSHFT   &kp Z       &mt X LGUI  &kp C       &kp V       &kp B           &kp N       &kp M       &kp COMMA   &kp DOT     &mt FSLH RBKT &kp RSHFT
+                &kp Q       &kp W       &kp E       &kp R       &kp T           &kp Y       &kp U       &kp I       &mt MINUS O &mt EQUAL P
+                &kp A       &kp S       &kp D       &kp F       &kp G           &kp H       &kp J       &kp K       &kp L       &mt LBKT SEMI
+    &kp LSHFT   &kp Z       &mt LGUI X  &kp C       &kp V       &kp B           &kp N       &kp M       &kp COMMA   &kp DOT     &mt RBKT FSLH &kp RSHFT
                                         &kp LCTRL   &mo NAV    &kp SPACE       &kp BSPC    &mo NAV  	&kp LGUI
                         >;
                 };
@@ -105,7 +113,7 @@ label= "BASE"                              ;
 
                 nav_layer {
 // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-label= "NAV "                              ;
+label= "NAV"                              ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃           ┃           ┃     UP    ┃           ┃     {     ┃   ┃     }     ┃     7     ┃     8     ┃     9     ┃     +     ┃
@@ -119,15 +127,37 @@ label= "NAV "                              ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
-                &kp N1   &mt N2 F2 &kp N3  &mt N4 F4 &mt N5 F5                  &kp N6    &kp N7   &kp N8   &kp N9   &kp N0
-                &kp LSHFT &trans &kp K_SCROLL_UP &kp K_SCROLL_DOWN   &trans           &mt LEFT HOME &kp DOWN   &kp UP    &mt RIGHT END  &kp SQT
-    &kp LSHFT      &kp BSLH    &trans      &trans      &trans      &trans          &kp PSCRN    &kp DEL     &trans      &trans   &kp NUBS    &kp RSHFT      
-                                        &kp LCTRL   &mo NAV       &kp SPACE       &mo BSPC     &mo NAV    &kp LGUI      
+                &kp N1   &mt F2 N2 &kp N3  &mt F4 N4 &mt F5 N5                  &kp N6         &kp N7      &kp N8      &kp N9      &kp N0
+                &kp LSHFT   &trans &kp K_SCROLL_UP &kp K_SCROLL_DOWN  &trans     &mt HOME LEFT  &kp DOWN    &kp UP   &mt END RIGHT  &kp SQT
+    &kp LSHFT      &kp BSLH    &trans      &trans      &trans      &trans       &kp PSCRN      &kp DEL     &trans      &trans      &kp NUBS   &kp RSHFT      
+                                        &trans   &trans       &trans            &trans     &trans    &trans      
                         >;
                 };
 
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
+                nav_layer {
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+label= "BLE"                              ;
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+//             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+//             ┃           ┃           ┃     UP    ┃           ┃     {     ┃   ┃     }     ┃     7     ┃     8     ┃     9     ┃     +     ┃
+//             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//             ┃   SHIFT   ┃   LEFT    ┃    DOWN   ┃   RIGHT   ┃     [     ┃   ┃     ]     ┃     4     ┃     5     ┃     6     ┃     -     ┃
+// ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+// ┃           ┃           ┃   P UP    ┃  C LOCK   ┃  P DOWN   ┃     (     ┃   ┃     )     ┃     1     ┃     2     ┃     3     ┃     *     ┃           ┃
+// ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                     ┃           ┃    TAB    ┃    SPC    ┃   ┃    DEL    ┃     0     ┃           ┃
+//                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+ bindings = <
+// ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
+
+                  &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans
+                  &trans      &trans      &trans    &kp BT_CLR_ALL  &trans        &trans      &trans      &trans      &trans      &trans
+      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans
+                                          &trans      &trans      &trans          &trans      &trans      &trans      
+                        >;
+                };
 
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
